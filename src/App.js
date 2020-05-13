@@ -1,40 +1,40 @@
 import React from 'react';
+// __________________________ //
+import { connect } from 'react-redux';
 
 import Header from './components/Header';
 import AddedFeatures from './components/AddedFeatures';
 import AdditionalFeatures from './components/AdditionalFeatures';
 import Total from './components/Total';
 
-const App = () => {
-  const state = {
-    additionalPrice: 0,
-    car: {
-      price: 26395,
-      name: '2019 Ford Mustang',
-      image:
-        'https://cdn.motor1.com/images/mgl/0AN2V/s1/2019-ford-mustang-bullitt.jpg',
-      features: []
-    },
-    additionalFeatures: [
-      { id: 1, name: 'V-6 engine', price: 1500 },
-      { id: 2, name: 'Racing detail package', price: 1500 },
-      { id: 3, name: 'Premium sound system', price: 500 },
-      { id: 4, name: 'Rear spoiler', price: 250 }
-    ]
-  };
+// __________________________ //
+import { addFeatures, removeFeatures } from "./actions/featureActions";
 
+// __________________________ //
+const App = ( { additionalPrice, additionalFeatures, car, addFeatures, removeFeatures } ) => {
   return (
     <div className="boxes">
       <div className="box">
-        <Header car={state.car} />
-        <AddedFeatures car={state.car} />
+        <Header car={ car } />
+        <AddedFeatures car={ car } removeFeatures={ removeFeatures } />
       </div>
       <div className="box">
-        <AdditionalFeatures additionalFeatures={state.additionalFeatures} />
-        <Total car={state.car} additionalPrice={state.additionalPrice} />
+        <AdditionalFeatures
+          additionalFeatures={ additionalFeatures } addFeatures={ addFeatures } />
+        <Total car={ car } additionalPrice={ additionalPrice } />
       </div>
     </div>
   );
 };
+// __________________________ //
 
-export default App;
+function mapStateToProps ( state ) {
+  return {
+    additionalPrice: state.additionalPrice,
+    additionalFeatures: state.additionalFeatures,
+    car: state.car
+  };
+}
+// __________________________ //
+
+export default connect( mapStateToProps, { addFeatures, removeFeatures } )( App );
