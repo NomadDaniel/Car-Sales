@@ -4,10 +4,12 @@ const Header = props => {
   return (
     <>
       <figure className="image is-128x128">
-        <img src={props.car.image} alt={props.car.name} />
+        <img src={ props.car.image } alt={ props.car.name } />
       </figure>
-      <h2>{props.car.name}</h2>
-      <p>Amount: ${props.car.price}</p>
+      <h1>{ props.car.name }</h1>
+      <p> (Original Price: $26395) </p>
+      <p>Price with selected features: ${ props.car.price }</p>
+
     </>
   );
 };

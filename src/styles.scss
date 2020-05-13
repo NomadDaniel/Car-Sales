@@ -5,22 +5,26 @@ body {
   background: #333;
   margin: 0;
   display: grid;
-  padding: 3em;
+  padding: 1em;
   place-items: center;
 }
 .boxes {
+  // min-height: 60vh;
+  max-height: 95vh;
   display: grid;
-  grid-gap: 2em;
+  grid-gap: 3em;
   grid-template-columns: repeat(2, minmax(350px, 1fr));
   grid-template-rows: auto;
 }
 .box {
   display: flex;
   flex-direction: column;
-  min-height: 100%;
+  // min-height: 100%;
+  // min-height: 60vh;
+  max-height: 95vh;
   h1 {
-    font-size: 20px;
-    margin: 0 0 1rem 0;
+    font-size: 25px;
+    margin: 0 0 0rem 0;
   }
   .content {
     padding-top: 1em;
@@ -46,4 +50,14 @@ body {
     border: 1px solid hotpink;
     color: #333;
   }
+}
+
+// #root > div > div:nth-child(1) > figure > img {
+//   // height: 200%;
+//   width: 200%;
+// }
+
+#root > div > div:nth-child(1) > figure {
+  height: 70%;
+  width: 70%;
 }
